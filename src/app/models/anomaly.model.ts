@@ -1,4 +1,5 @@
 export interface Anomaly {
+    id: number;
     type: AnomalyTypeEnum;
     title: string;
     description: string;

@@ -1,6 +1,4 @@
-<div
-  class="container"
->
+<div class="container">
   <mat-toolbar color="primary">
     <h1>mParticle</h1>
     <span class="spacer"></span>
@@ -9,27 +7,17 @@
     </button>
   </mat-toolbar>
 
-  <mat-sidenav-container
-    class="sidenav-container"
-  >
-    <mat-sidenav
-      #snav
-      [mode]="'over'"
-      [position]="'end'"
-    >
-    <app-notifications-list></app-notifications-list>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav [mode]="'over'" [position]="'end'" [autoFocus]="false">
+      <app-notifications-list
+      (onMarkAsRead)="snav.toggle()"
+      (onMarkAllAsRead)="snav.toggle()"
+      ></app-notifications-list>
 
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
-<router-outlet></router-outlet>

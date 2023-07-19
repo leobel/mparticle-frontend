@@ -12,14 +12,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 // * * * * * * * * * * Material Components * * * * * * * * * * * 
 
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
+import { NotificationsDetailsComponent } from './components/notifications-details/notifications-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    NotificationsDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { NotificationsListComponent } from './components/notifications-list/noti
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

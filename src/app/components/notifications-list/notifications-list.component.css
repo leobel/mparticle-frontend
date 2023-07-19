@@ -15,14 +15,40 @@
     margin: 0;
 }
 
+.anomalies-header a {
+    text-decoration: none;
+    color: blue;
+}
+
 .anomalies-content {
     overflow: auto;
+}
+
+mat-list-item:hover {
+    cursor: pointer;
+}
+
+mat-list-item::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+}
+
+mat-list-item:hover::before {
+    background-color: black;
+    opacity: .04;
 }
 
 :host ::ng-deep .mat-icon.self-center {
     align-self: center !important;
     margin: 0 20px !important;
 }
+
 :host ::ng-deep .mat-badge.hide-text .mat-badge-content {
     color: transparent;
 }

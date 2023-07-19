@@ -3,14 +3,15 @@
         <h3>Notifications</h3>
         <a mat-flat-button (click)="markAllAsRead()">Mark all as read</a>
     </div>
+    <mat-divider></mat-divider>
     <div class="anomalies-content">
-        <mat-selection-list #list>
-            <mat-list-option lines="3" *ngFor="let anomaly of anomalies, let i = index">
+        <mat-list #list>
+            <mat-list-item lines="3" *ngFor="let anomaly of anomalies" (click)="onSelect(anomaly.id)">
                 <mat-icon color="warn" matListItemIcon matBadge="0" matBadgePosition="before" class="hide-text tiny self-center">{{ getIcon(anomaly.type) }}</mat-icon>
-                <div matListItemTitle>{{anomaly.title}}</div>
-                <span>{{anomaly.description}}</span>
-                <!-- <div matListItemLine>{{anomaly.description}}</div> -->
-            </mat-list-option>
-        </mat-selection-list>
+                <h3 matListItemTitle>{{anomaly.title}}</h3>
+                {{anomaly.description}}
+                <mat-checkbox matListItemMeta (click)="$event.stopPropagation(); onSelectionChange(anomaly.id)"></mat-checkbox>
+            </mat-list-item>
+        </mat-list>
     </div>
 </div>
