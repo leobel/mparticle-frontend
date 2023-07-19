@@ -11,11 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 // * * * * * * * * * * Material Components * * * * * * * * * * * 
+
+import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotificationsListComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

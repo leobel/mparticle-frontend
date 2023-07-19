@@ -1,0 +1,16 @@
+<div class="anomalies-container">
+    <div class="anomalies-header">
+        <h3>Notifications</h3>
+        <a mat-flat-button (click)="markAllAsRead()">Mark all as read</a>
+    </div>
+    <div class="anomalies-content">
+        <mat-selection-list #list>
+            <mat-list-option lines="3" *ngFor="let anomaly of anomalies, let i = index">
+                <mat-icon color="warn" matListItemIcon matBadge="0" matBadgePosition="before" class="hide-text tiny self-center">{{ getIcon(anomaly.type) }}</mat-icon>
+                <div matListItemTitle>{{anomaly.title}}</div>
+                <span>{{anomaly.description}}</span>
+                <!-- <div matListItemLine>{{anomaly.description}}</div> -->
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>
