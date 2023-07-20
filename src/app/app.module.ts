@@ -14,16 +14,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // * * * * * * * * * * Material Components * * * * * * * * * * * 
 
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 import { NotificationsDetailsComponent } from './components/notifications-details/notifications-details.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationsListComponent,
-    NotificationsDetailsComponent
+    NotificationsDetailsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { NotificationsDetailsComponent } from './components/notifications-detail
     MatListModule,
     MatBadgeModule,
     MatCheckboxModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

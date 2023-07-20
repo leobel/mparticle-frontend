@@ -63,3 +63,7 @@ mat-list-item:hover::before {
     align-self: center !important;
     margin: 0 20px !important;
 }
+
+app-loading {
+    flex-grow: 1;
+}

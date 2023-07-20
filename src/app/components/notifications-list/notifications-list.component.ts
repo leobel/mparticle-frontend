@@ -13,6 +13,8 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   anomalies: Anomaly[];
   subscription!: Subscription | null;
   orgId = 1;
+  loading = false;
+
   @Input() opened: boolean = false;
   @Output() readonly onMarkAllAsRead: EventEmitter<void> = new EventEmitter<void>();
   @Output() readonly onMarkAsRead: EventEmitter<number> = new EventEmitter<number>();
@@ -28,9 +30,11 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   }
 
   private getAllUnread() {
+    this.loading = true;
     this.subscription = this.anomaliesService.getAllUnread(this.orgId)
       .subscribe(anomalies => {
         this.anomalies = anomalies;
+        this.loading = false;
       });
   }
 

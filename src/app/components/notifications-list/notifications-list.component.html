@@ -4,14 +4,19 @@
         <a mat-flat-button (click)="markAllAsRead()">Mark all as read</a>
     </div>
     <mat-divider></mat-divider>
-    <div class="anomalies-content">
-        <mat-list #list>
-            <mat-list-item lines="3" *ngFor="let anomaly of anomalies" (click)="onSelect(anomaly.id)">
-                <mat-icon color="warn" matListItemIcon matBadge="0" matBadgePosition="before" class="hide-text tiny self-center">{{ getIcon(anomaly.type) }}</mat-icon>
-                <h3 matListItemTitle>{{anomaly.title}}</h3>
-                {{anomaly.description}}
-                <mat-checkbox matListItemMeta (click)="$event.stopPropagation(); onSelectionChange(anomaly.id)"></mat-checkbox>
-            </mat-list-item>
-        </mat-list>
-    </div>
+    <ng-container *ngIf="loading; else anomaliesList">
+        <app-loading></app-loading>
+    </ng-container>
+    <ng-template #anomaliesList>
+        <div class="anomalies-content">
+            <mat-list #list>
+                <mat-list-item lines="3" *ngFor="let anomaly of anomalies" (click)="onSelect(anomaly.id)">
+                    <mat-icon color="warn" matListItemIcon matBadge="0" matBadgePosition="before" class="hide-text tiny self-center">{{ getIcon(anomaly.type) }}</mat-icon>
+                    <h3 matListItemTitle>{{anomaly.title}}</h3>
+                    {{anomaly.description}}
+                    <mat-checkbox matListItemMeta (click)="$event.stopPropagation(); onSelectionChange(anomaly.id)"></mat-checkbox>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </ng-template>
 </div>
