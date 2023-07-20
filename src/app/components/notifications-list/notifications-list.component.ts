@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Anomaly, AnomalyTypeEnum } from 'src/app/models/anomaly.model';
 import { AnomaliesService } from 'src/app/services/anomalies.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-notifications-list',
@@ -12,7 +13,7 @@ import { AnomaliesService } from 'src/app/services/anomalies.service';
 export class NotificationsListComponent implements OnInit, OnDestroy {
   anomalies: Anomaly[];
   subscription!: Subscription | null;
-  orgId = 1;
+  orgId: number;
   loading = false;
   error = false;
 
@@ -25,6 +26,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
     private anomaliesService: AnomaliesService
   ) {
     this.anomalies = [];
+    this.orgId = environment.orgId;
   }
 
   ngOnInit(): void {

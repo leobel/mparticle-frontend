@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Anomaly } from 'src/app/models/anomaly.model';
 import { AnomaliesService } from 'src/app/services/anomalies.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-notifications-details',
@@ -12,12 +13,14 @@ import { AnomaliesService } from 'src/app/services/anomalies.service';
 })
 export class NotificationsDetailsComponent implements OnInit {
   anomaly$!: Observable<Anomaly | undefined>;
-  orgId = 1;
+  orgId: number;
 
   constructor(
     private acitveRoute: ActivatedRoute,
     private anomaliesService: AnomaliesService
-  ) {}
+  ) {
+    this.orgId = environment.orgId;
+  }
 
   ngOnInit() {
     this.anomaly$ = this.acitveRoute.paramMap.pipe(
