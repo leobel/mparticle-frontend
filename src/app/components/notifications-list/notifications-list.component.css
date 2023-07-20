@@ -64,6 +64,6 @@ mat-list-item:hover::before {
     margin: 0 20px !important;
 }
 
-app-loading {
+app-loading, app-error {
     flex-grow: 1;
 }

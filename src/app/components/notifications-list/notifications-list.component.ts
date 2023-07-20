@@ -14,6 +14,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   subscription!: Subscription | null;
   orgId = 1;
   loading = false;
+  error = false;
 
   @Input() opened: boolean = false;
   @Output() readonly onMarkAllAsRead: EventEmitter<void> = new EventEmitter<void>();
@@ -32,9 +33,16 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   private getAllUnread() {
     this.loading = true;
     this.subscription = this.anomaliesService.getAllUnread(this.orgId)
-      .subscribe(anomalies => {
-        this.anomalies = anomalies;
-        this.loading = false;
+      .subscribe({
+        next: (anomalies) => {
+          this.anomalies = anomalies;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error(err);
+          this.error = true;
+          this.loading = false;
+        }
       });
   }
 
@@ -58,9 +66,15 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
 
   markAllAsRead() {
     this.subscription = this.anomaliesService.markAllAsRead(this.orgId)
-      .subscribe(anomalies => {
-        this.anomalies = anomalies;
-        this.onMarkAllAsRead.next();
+      .subscribe({
+        next: (anomalies) => {
+          this.anomalies = anomalies;
+          this.onMarkAllAsRead.next();
+        },
+        error: (err) => {
+          console.error(err);
+          this.error = true;
+        }
       })
   }
 
@@ -80,7 +94,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.error(err);
-
+          this.error = true;
         },
 
       })

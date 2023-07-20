@@ -1,11 +1,11 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, find, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Anomaly, AnomalyTypeEnum } from '../models/anomaly.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnomaliesService implements OnDestroy {
+export class AnomaliesService {
   anomalies: { [key: number]: Anomaly[] };
 
   constructor() {
@@ -83,11 +83,6 @@ export class AnomaliesService implements OnDestroy {
     };
   }
 
-  ngOnDestroy(): void {
-    // TODO: clean resources
-  }
-
-
   getAll(orgId: number): Observable<Anomaly[]> {
     return of(this.anomalies[orgId] || []);
   }
@@ -98,6 +93,7 @@ export class AnomaliesService implements OnDestroy {
 
   getAllUnread(orgId: number): Observable<Anomaly[]> {
     return of(this.anomalies[orgId]?.filter(a => !a.isRead) || []);
+   
   }
 
   markAllAsRead(orgId: number): Observable<Anomaly[]> {

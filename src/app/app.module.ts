@@ -20,13 +20,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 import { NotificationsDetailsComponent } from './components/notifications-details/notifications-details.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationsListComponent,
     NotificationsDetailsComponent,
-    LoadingComponent
+    LoadingComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

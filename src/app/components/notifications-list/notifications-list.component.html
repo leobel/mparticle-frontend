@@ -8,6 +8,11 @@
         <app-loading></app-loading>
     </ng-container>
     <ng-template #anomaliesList>
+        <ng-container *ngIf="error; else content">
+            <app-error></app-error>
+        </ng-container>
+    </ng-template>
+    <ng-template #content>
         <div class="anomalies-content">
             <mat-list #list>
                 <mat-list-item lines="3" *ngFor="let anomaly of anomalies" (click)="onSelect(anomaly.id)">
