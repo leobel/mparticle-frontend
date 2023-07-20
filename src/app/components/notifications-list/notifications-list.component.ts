@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Anomaly, AnomalyTypeEnum } from 'src/app/models/anomaly.model';
@@ -13,6 +13,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   anomalies: Anomaly[];
   subscription!: Subscription | null;
   orgId = 1;
+  @Input() opened: boolean = false;
   @Output() readonly onMarkAllAsRead: EventEmitter<void> = new EventEmitter<void>();
   @Output() readonly onMarkAsRead: EventEmitter<number> = new EventEmitter<number>();
 
@@ -24,12 +25,20 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+  }
+
+  private getAllUnread() {
     this.subscription = this.anomaliesService.getAllUnread(this.orgId)
       .subscribe(anomalies => {
         this.anomalies = anomalies;
       });
   }
 
+  ngOnChanges(changes: { [property: string]: SimpleChange }) {
+    if (changes['opened']?.currentValue) {
+      this.getAllUnread();
+    }
+  }
 
   getIcon(type: AnomalyTypeEnum): string {
     switch (type) {

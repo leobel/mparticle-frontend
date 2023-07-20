@@ -10,6 +10,7 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #snav [mode]="'over'" [position]="'end'" [autoFocus]="false">
       <app-notifications-list
+      [opened]="snav.opened"
       (onMarkAsRead)="snav.toggle()"
       (onMarkAllAsRead)="snav.toggle()"
       ></app-notifications-list>
