@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadingComponent } from './loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 describe('LoadingComponent', () => {
   let component: LoadingComponent;
@@ -8,6 +9,9 @@ describe('LoadingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatProgressSpinnerModule
+      ],
       declarations: [LoadingComponent]
     });
     fixture = TestBed.createComponent(LoadingComponent);

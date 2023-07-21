@@ -34,6 +34,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
 
   private getAllUnread() {
     this.loading = true;
+    this.error = false;
     this.subscription = this.anomaliesService.getAllUnread(this.orgId)
       .subscribe({
         next: (anomalies) => {
@@ -51,6 +52,8 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   ngOnChanges(changes: { [property: string]: SimpleChange }) {
     if (changes['opened']?.currentValue) {
       this.getAllUnread();
+    } else {
+      this.anomalies = [];
     }
   }
 
@@ -81,16 +84,12 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   }
 
   onSelect(id: number, navigate = true) {
-    this.subscription = this.anomaliesService.markAsRead(this.orgId, id)
+    this.subscription = this.anomaliesService.markAsRead(this.orgId, [id])
       .subscribe({
         next: (anomalies) => {
           this.anomalies = anomalies;
           if (navigate) {
-            this.router.navigate(
-              [
-                `/notifications/${id}`
-              ]
-            );
+            this.router.navigateByUrl(`/notifications/${id}`);
             this.onMarkAsRead.next(id);
           }
         },
@@ -102,7 +101,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
       })
   }
 
-  onSelectionChange(id: number) {
+  markAsRead(id: number) {
     this.onSelect(id, false);
   }
 

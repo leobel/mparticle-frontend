@@ -1,1 +1,4 @@
-<p>notifications: {{ anomaly$ | async | json }}</p>
+<div *ngIf=" anomaly$ | async as anomaly">
+    <h3>Title: {{anomaly.title}}</h3>
+    <p>Description: {{ anomaly.description }}</p>
+</div>

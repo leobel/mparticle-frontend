@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorComponent } from './error.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -8,6 +9,9 @@ describe('ErrorComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatIconModule
+      ],
       declarations: [ErrorComponent]
     });
     fixture = TestBed.createComponent(ErrorComponent);

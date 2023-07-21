@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Anomaly } from 'src/app/models/anomaly.model';
 import { AnomaliesService } from 'src/app/services/anomalies.service';
 import { environment } from 'src/environments/environment';
@@ -16,6 +16,7 @@ export class NotificationsDetailsComponent implements OnInit {
   orgId: number;
 
   constructor(
+    private router: Router,
     private acitveRoute: ActivatedRoute,
     private anomaliesService: AnomaliesService
   ) {
@@ -27,6 +28,11 @@ export class NotificationsDetailsComponent implements OnInit {
       switchMap(params => {
         const id = Number(params.get('id'));
         return this.anomaliesService.get(this.orgId, id);
-      }));
+      }),
+      catchError(err => {
+        this.router.navigateByUrl('/');
+        return of();
+      })
+    );
   }
 }
