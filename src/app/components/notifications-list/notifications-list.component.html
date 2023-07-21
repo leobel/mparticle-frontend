@@ -1,7 +1,7 @@
 <div class="anomalies-container">
     <div class="anomalies-header">
         <h3>Notifications</h3>
-        <a mat-flat-button (click)="markAllAsRead()">Mark all as read</a>
+        <a mat-flat-button (click)="markAllAsRead()" *ngIf="anomalies.length">Mark all as read</a>
     </div>
     <mat-divider></mat-divider>
     <ng-container *ngIf="loading; else anomaliesList">
