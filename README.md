@@ -4,11 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 
@@ -18,10 +14,14 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Screen shots
 
-## Further help
+**Notifications list**
+![Screen Shot 2023-07-21 at 1 05 22 AM](https://github.com/leobel/mparticle-frontend/assets/16786232/fa51f8e8-c299-47b1-9741-d98a35f78a4c)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Notifications loading**
+![Screen Shot 2023-07-21 at 1 09 22 AM](https://github.com/leobel/mparticle-frontend/assets/16786232/78841ba7-8167-491c-8b0a-21a252c556a9)
+
+**Notifications error**
+![Screen Shot 2023-07-21 at 1 11 22 AM](https://github.com/leobel/mparticle-frontend/assets/16786232/6d551e4c-eb45-4328-a5bf-71ca40cccf4c)
